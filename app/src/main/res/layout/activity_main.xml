@@ -11,29 +11,29 @@
     tools:context="com.macktaby.sbrp.MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_project_management"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="118dp"
-        android:text="Project Manager" />
+        android:text="Project Management" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_central_management"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/btn_project_management"
         android:layout_centerHorizontal="true"
-        android:text="Central Manager" />
+        android:text="Central Management" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_dev"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/btn_central_management"
+        android:layout_alignStart="@+id/btn_central_management"
+        android:layout_below="@+id/btn_central_management"
         android:layout_centerHorizontal="true"
         android:text="Developer" />
     />
