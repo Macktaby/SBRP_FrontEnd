@@ -1,9 +1,11 @@
-package com.macktaby.sbrp;
+package com.macktaby.sbrp.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-public class PackageDetails extends AppCompatActivity {
+import com.macktaby.sbrp.R;
+
+public class PackageDetailsActivity extends AppCompatActivity {
 
 
 

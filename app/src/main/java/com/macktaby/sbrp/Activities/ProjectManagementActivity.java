@@ -1,14 +1,16 @@
-package com.macktaby.sbrp;
+package com.macktaby.sbrp.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ProjectManagement extends AppCompatActivity {
+import com.macktaby.sbrp.R;
+
+public class ProjectManagementActivity extends AppCompatActivity {
 
     public static Intent getIntent(Context context) {
-        Intent intent = new Intent(context, ProjectManagement.class);
+        Intent intent = new Intent(context, ProjectManagementActivity.class);
         return intent;
     }
 

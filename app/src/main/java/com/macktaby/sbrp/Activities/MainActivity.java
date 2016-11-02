@@ -1,9 +1,11 @@
-package com.macktaby.sbrp;
+package com.macktaby.sbrp.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import com.macktaby.sbrp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         central_mng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(CentralManagement.getIntent(MainActivity.this));
+                startActivity(CentralManagementActivity.getIntent(MainActivity.this));
             }
         });
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         project_mng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(ProjectManagement.getIntent(MainActivity.this));
+                startActivity(ProjectManagementActivity.getIntent(MainActivity.this));
             }
         });
 

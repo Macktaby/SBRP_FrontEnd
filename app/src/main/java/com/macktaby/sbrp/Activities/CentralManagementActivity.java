@@ -1,4 +1,4 @@
-package com.macktaby.sbrp;
+package com.macktaby.sbrp.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,12 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class CentralManagement extends AppCompatActivity {
+import com.macktaby.sbrp.R;
+
+public class CentralManagementActivity extends AppCompatActivity {
 
     private Button btn_packages;
 
     public static Intent getIntent(Context context) {
-        Intent intent = new Intent(context, CentralManagement.class);
+        Intent intent = new Intent(context, CentralManagementActivity.class);
         return intent;
     }
 
@@ -29,7 +31,7 @@ public class CentralManagement extends AppCompatActivity {
         btn_packages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(Packages.getIntent(CentralManagement.this));
+                startActivity(PackagesActivity.getIntent(CentralManagementActivity.this));
             }
         });
     }
