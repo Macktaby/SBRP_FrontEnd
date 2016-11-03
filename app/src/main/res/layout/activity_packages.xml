@@ -9,30 +9,61 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="2"
     tools:context=".Activities.PackagesActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_package_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Package Name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_edit_package"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Edit" />
+
+            <Button
+                android:id="@+id/btn_delete_package"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="Delete" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/listview_packages"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.25">
+        android:layout_height="wrap_content">
+
     </ListView>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:gravity="bottom"
-        android:layout_weight="1.75">
+        android:gravity="bottom">
 
         <Button
             android:id="@+id/btn_add_new_package"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="bottom"
-            android:text="Add new Package"
-
-            />
+            android:text="Add new Package" />
 
     </RelativeLayout>
 

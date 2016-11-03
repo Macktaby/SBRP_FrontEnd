@@ -59,4 +59,15 @@ public class PackageParser {
         return 0;
     }
 
+    public static String parseState(String result) {
+        try {
+
+            JSONObject jsonObject = new JSONObject(result);
+            return jsonObject.getString("state");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "false";
+    }
+
 }
