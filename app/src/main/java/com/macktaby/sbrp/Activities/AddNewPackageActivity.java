@@ -1,5 +1,7 @@
 package com.macktaby.sbrp.Activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,20 +13,31 @@ import android.widget.Toast;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.macktaby.sbrp.R;
-import com.macktaby.sbrp.parsing.PackageParser;
+import com.macktaby.sbrp.models.Package;
+import com.macktaby.sbrp.parsing.*;
 
 public class AddNewPackageActivity extends AppCompatActivity {
 
-    EditText editText_packageName;
-    EditText editText_packageTechRef;
-    EditText editText_packageMngRef;
-    EditText editText_packageBzRef;
-    Button btn_addPackage;
+    private Package parent;
+
+    private EditText editText_packageName;
+    private EditText editText_packageTechRef;
+    private EditText editText_packageMngRef;
+    private EditText editText_packageBzRef;
+    private Button btn_addPackage;
+
+    public static Intent getIntent(Context context, Package pkg) {
+        return
+                new Intent(context, AddNewPackageActivity.class)
+                        .putExtra("parent", pkg);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_package);
+
+        parent = (Package) getIntent().getSerializableExtra("parent");
 
         attachViewIDs();
     }
@@ -51,7 +64,7 @@ public class AddNewPackageActivity extends AppCompatActivity {
                 .appendQueryParameter("tech_ref", editText_packageTechRef.getText().toString())
                 .appendQueryParameter("mng_ref", editText_packageMngRef.getText().toString())
                 .appendQueryParameter("bz_ref", editText_packageBzRef.getText().toString())
-                .appendQueryParameter("parentID", "1")
+                .appendQueryParameter("parentID", String.valueOf(parent.getPackageID()))
                 .build();
 
         Ion.with(this)
@@ -66,7 +79,7 @@ public class AddNewPackageActivity extends AppCompatActivity {
                             Toast.makeText(AddNewPackageActivity.this, "Error Adding the package\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        
+
                         if (PackageParser.parseID(result) > 0)
                             Toast.makeText(AddNewPackageActivity.this, "The Package Added successfully", Toast.LENGTH_SHORT).show();
                         else

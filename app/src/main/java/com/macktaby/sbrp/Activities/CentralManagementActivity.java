@@ -8,14 +8,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.macktaby.sbrp.R;
+import com.macktaby.sbrp.models.Package;
 
 public class CentralManagementActivity extends AppCompatActivity {
 
     private Button btn_packages;
 
     public static Intent getIntent(Context context) {
-        Intent intent = new Intent(context, CentralManagementActivity.class);
-        return intent;
+        return new Intent(context, CentralManagementActivity.class);
     }
 
     @Override
@@ -31,7 +31,10 @@ public class CentralManagementActivity extends AppCompatActivity {
         btn_packages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(PackagesActivity.getIntent(CentralManagementActivity.this));
+                Package parentPkg = new Package(1, "DEFAULT", "DEFAULT", "DEFAULT", "DEFAULT", 1);
+                startActivity(
+                        PackagesActivity.getIntent(CentralManagementActivity.this, parentPkg)
+                );
             }
         });
     }

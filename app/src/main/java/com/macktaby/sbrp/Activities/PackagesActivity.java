@@ -2,6 +2,7 @@ package com.macktaby.sbrp.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,16 +27,20 @@ public class PackagesActivity extends AppCompatActivity {
     private ListView list_packages;
     private Button btn_addNewPackage;
 
-    private ArrayList<Package> packages;
+    private Package pkg;
+    private ArrayList<Package> subPackages;
 
-    public static Intent getIntent(Context context) {
-        return new Intent(context, PackagesActivity.class);
+    public static Intent getIntent(Context context, Package pkg) {
+        return new Intent(context, PackagesActivity.class)
+                .putExtra("package", pkg);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_packages);
+
+        pkg = (Package) getIntent().getSerializableExtra("package");
 
         attachViewIDs();
     }
@@ -47,35 +52,43 @@ public class PackagesActivity extends AppCompatActivity {
         btn_addNewPackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PackagesActivity.this, AddNewPackageActivity.class);
-                startActivity(intent) ;
+                startActivity(
+                        AddNewPackageActivity.getIntent(getApplicationContext(), pkg)
+                );
             }
         });
     }
 
     private void loadPackagesFromAPI() {
-        String url = "https://macktaby-merged.rhcloud.com/SBRP/rest/cm/getPackages";
+        String baseURL = "https://macktaby-merged.rhcloud.com/SBRP/rest/cm/getSubPackages";
+
+        Uri builtUri = Uri.parse(baseURL).buildUpon()
+                .appendQueryParameter("id", String.valueOf(pkg.getPackageID()))
+                .build();
+
+//        Toast.makeText(PackagesActivity.this, builtUri.toString(), Toast.LENGTH_LONG).show();
+        Log.d("LINKK", builtUri.toString());
 
         Ion.with(this)
-                .load("POST", url)
+                .load("POST", builtUri.toString())
+                .setHeader("Content-Type", "application/x-www-form-urlencoded")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
 
                     @Override
                     public void onCompleted(Exception e, String result) {
                         if (e != null) {
-                            Log.e("ErrorION", e.getMessage());
                             Toast.makeText(PackagesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             return;
                         }
 
-                        final ArrayList<Package> packages = PackageParser.parsePackages(result);
+                        subPackages = PackageParser.parsePackages(result);
                         ArrayList<String> packagesStr = new ArrayList<String>();
-                        for (Package pkg : packages)
+                        for (Package pkg : subPackages)
                             packagesStr.add(pkg.getName());
 
                         ArrayAdapter<String> mForecastAdapter =
-                                new ArrayAdapter<String>(
+                                new ArrayAdapter<>(
                                         PackagesActivity.this, // The current context (this activity)
                                         R.layout.list_item_package, // The name of the layout ID.
                                         R.id.list_item_package_textview, // The ID of the textview to populate.
@@ -85,11 +98,11 @@ public class PackagesActivity extends AppCompatActivity {
                         list_packages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Toast.makeText(
-                                        PackagesActivity.this,
-                                        packages.get(i).getPackageID() + " " + packages.get(i).getName(),
-                                        Toast.LENGTH_SHORT)
-                                        .show();
+
+                                startActivity(
+                                        PackagesActivity.getIntent(PackagesActivity.this, subPackages.get(i))
+                                );
+
                             }
                         });
 

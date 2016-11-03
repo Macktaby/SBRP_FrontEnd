@@ -1,81 +1,83 @@
 package com.macktaby.sbrp.models;
 
-public class Package {
+import java.io.Serializable;
 
-	private int packageID;
+public class Package implements Serializable {
 
-	private String name;
-	private String techReflection;
-	private String mngReflection;
-	private String bzReflection;
+    private int packageID;
 
-	private int parentID;
+    private String name;
+    private String techReflection;
+    private String mngReflection;
+    private String bzReflection;
 
-	public Package() {
-		this.packageID = 0;
-		this.name = "";
-		this.techReflection = "";
-		this.mngReflection = "";
-		this.bzReflection = "";
-		this.parentID = 0;
-	}
+    private int parentID;
 
-	public Package(int packageID, String name, String techReflection, String mngReflection, String bzReflection,
-			int parentID) {
-		this.packageID = packageID;
-		this.name = name;
-		this.techReflection = techReflection;
-		this.mngReflection = mngReflection;
-		this.bzReflection = bzReflection;
-		this.parentID = parentID;
-	}
+    public Package() {
+        this.packageID = 0;
+        this.name = "";
+        this.techReflection = "";
+        this.mngReflection = "";
+        this.bzReflection = "";
+        this.parentID = 0;
+    }
 
-	public int getPackageID() {
-		return packageID;
-	}
+    public Package(int packageID, String name, String techReflection, String mngReflection, String bzReflection,
+                   int parentID) {
+        this.packageID = packageID;
+        this.name = name;
+        this.techReflection = techReflection;
+        this.mngReflection = mngReflection;
+        this.bzReflection = bzReflection;
+        this.parentID = parentID;
+    }
 
-	public void setPackageID(int packageID) {
-		this.packageID = packageID;
-	}
+    public int getPackageID() {
+        return packageID;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setPackageID(int packageID) {
+        this.packageID = packageID;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getTechReflection() {
-		return techReflection;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setTechReflection(String techReflection) {
-		this.techReflection = techReflection;
-	}
+    public String getTechReflection() {
+        return techReflection;
+    }
 
-	public String getMngReflection() {
-		return mngReflection;
-	}
+    public void setTechReflection(String techReflection) {
+        this.techReflection = techReflection;
+    }
 
-	public void setMngReflection(String mngReflection) {
-		this.mngReflection = mngReflection;
-	}
+    public String getMngReflection() {
+        return mngReflection;
+    }
 
-	public String getBzReflection() {
-		return bzReflection;
-	}
+    public void setMngReflection(String mngReflection) {
+        this.mngReflection = mngReflection;
+    }
 
-	public void setBzReflection(String bzReflection) {
-		this.bzReflection = bzReflection;
-	}
+    public String getBzReflection() {
+        return bzReflection;
+    }
 
-	public int getParentID() {
-		return parentID;
-	}
+    public void setBzReflection(String bzReflection) {
+        this.bzReflection = bzReflection;
+    }
 
-	public void setParentID(int parentID) {
-		this.parentID = parentID;
-	}
+    public int getParentID() {
+        return parentID;
+    }
+
+    public void setParentID(int parentID) {
+        this.parentID = parentID;
+    }
 
 }
