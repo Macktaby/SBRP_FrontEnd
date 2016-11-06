@@ -47,17 +47,23 @@ public class PackagesActivity extends AppCompatActivity {
         attachViewIDs();
     }
 
-    private void attachViewIDs() {
+    @Override
+    protected void onStart() {
+        super.onStart();
         loadPackagesFromAPI();
+    }
+
+    private void attachViewIDs() {
         list_packages = (ListView) findViewById(R.id.listview_packages);
 
         btn_editPackage = (Button) findViewById(R.id.btn_edit_package);
         btn_editPackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(
-//                        AddNewPackageActivity.getIntent(getApplicationContext(), pkg)
-//                );
+                Toast.makeText(getApplicationContext(), pkg.getName(), Toast.LENGTH_LONG).show();
+                startActivity(
+                        EditPackageActivity.getIntent(getApplicationContext(), pkg)
+                );
             }
         });
 

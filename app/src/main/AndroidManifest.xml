@@ -20,7 +20,8 @@
         <activity android:name=".view.ProjectManagementActivity" />
         <activity android:name=".view.CentralManagementActivity" />
         <activity android:name=".view.PackagesActivity" />
-        <activity android:name=".view.AddNewPackageActivity"></activity>
+        <activity android:name=".view.AddNewPackageActivity" />
+        <activity android:name=".view.EditPackageActivity"></activity>
     </application>
 
 </manifest>
