@@ -21,7 +21,10 @@
         <activity android:name=".view.CentralManagementActivity" />
         <activity android:name=".view.PackagesActivity" />
         <activity android:name=".view.AddNewPackageActivity" />
-        <activity android:name=".view.EditPackageActivity"></activity>
+        <activity android:name=".view.EditPackageActivity" />
+        <activity android:name=".view.PeopleActivity" />
+        <activity android:name=".view.ProjectsActivity" />
+        <activity android:name=".view.AddNewProjectActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,8 @@
 package com.macktaby.sbrp.model;
 
-public class Project {
+import java.io.Serializable;
+
+public class Project implements Serializable {
 
 	private int projectID;
 

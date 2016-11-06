@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import com.macktaby.sbrp.parsing.*;
 public class PackagesActivity extends AppCompatActivity {
 
     private ListView list_packages;
+    private TextView textView_packageName;
     private Button btn_addNewPackage;
     private Button btn_editPackage;
     private Button btn_deletePackage;
@@ -45,6 +47,7 @@ public class PackagesActivity extends AppCompatActivity {
         pkg = (Package) getIntent().getSerializableExtra("package");
 
         attachViewIDs();
+        attachViewActions();
     }
 
     @Override
@@ -57,6 +60,19 @@ public class PackagesActivity extends AppCompatActivity {
         list_packages = (ListView) findViewById(R.id.listview_packages);
 
         btn_editPackage = (Button) findViewById(R.id.btn_edit_package);
+        btn_deletePackage = (Button) findViewById(R.id.btn_delete_package);
+        btn_addNewPackage = (Button) findViewById(R.id.btn_add_new_package);
+
+        textView_packageName = (TextView) findViewById(R.id.textView_package_name);
+        textView_packageName.setText(pkg.getName());
+
+        if (pkg.getPackageID() == 1) {
+            btn_deletePackage.setEnabled(false);
+            btn_editPackage.setEnabled(false);
+        }
+    }
+
+    private void attachViewActions() {
         btn_editPackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +83,6 @@ public class PackagesActivity extends AppCompatActivity {
             }
         });
 
-        btn_deletePackage = (Button) findViewById(R.id.btn_delete_package);
         btn_deletePackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +104,6 @@ public class PackagesActivity extends AppCompatActivity {
             }
         });
 
-        btn_addNewPackage = (Button) findViewById(R.id.btn_add_new_package);
         btn_addNewPackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,41 +112,6 @@ public class PackagesActivity extends AppCompatActivity {
                 );
             }
         });
-
-        if (pkg.getPackageID() == 1) {
-            btn_deletePackage.setEnabled(false);
-            btn_editPackage.setEnabled(false);
-        }
-    }
-
-    private void deletePackage() {
-        String baseURL = "https://macktaby-merged.rhcloud.com/SBRP/rest/cm/deletePackage";
-
-        Uri builtUri = Uri.parse(baseURL).buildUpon()
-                .appendQueryParameter("id", String.valueOf(pkg.getPackageID()))
-                .build();
-
-        Ion.with(this)
-                .load("POST", builtUri.toString())
-                .setHeader("Content-Type", "application/x-www-form-urlencoded")
-                .asString()
-                .setCallback(new FutureCallback<String>() {
-
-                    @Override
-                    public void onCompleted(Exception e, String result) {
-                        if (e != null) {
-                            Toast.makeText(PackagesActivity.this, "Error Deleting the package\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                        if (PackageParser.parseState(result).equals("true"))
-                            Toast.makeText(PackagesActivity.this, "The Package deleted successfully", Toast.LENGTH_SHORT).show();
-                        else
-                            Toast.makeText(PackagesActivity.this, "Error deleting the package", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
     }
 
     private void loadPackagesFromAPI() {
@@ -183,4 +162,35 @@ public class PackagesActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void deletePackage() {
+        String baseURL = "https://macktaby-merged.rhcloud.com/SBRP/rest/cm/deletePackage";
+
+        Uri builtUri = Uri.parse(baseURL).buildUpon()
+                .appendQueryParameter("id", String.valueOf(pkg.getPackageID()))
+                .build();
+
+        Ion.with(this)
+                .load("POST", builtUri.toString())
+                .setHeader("Content-Type", "application/x-www-form-urlencoded")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        if (e != null) {
+                            Toast.makeText(PackagesActivity.this, "Error Deleting the package\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        if (PackageParser.parseState(result).equals("true"))
+                            Toast.makeText(PackagesActivity.this, "The Package deleted successfully", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(PackagesActivity.this, "Error deleting the package", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+    }
+
 }
