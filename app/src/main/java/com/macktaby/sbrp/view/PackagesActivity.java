@@ -140,26 +140,6 @@ public class PackagesActivity extends AppCompatActivity {
                         ArrayList<String> packagesStr = new ArrayList<String>();
                         for (Package pkg : subPackages)
                             packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
-                        for (Package pkg : subPackages)
-                            packagesStr.add(pkg.getName());
 
                         ArrayAdapter<String> mForecastAdapter =
                                 new ArrayAdapter<>(

@@ -19,7 +19,6 @@
         </activity>
         <activity android:name=".view.ProjectManagementActivity" />
         <activity android:name=".view.CentralManagementActivity" />
-        <activity android:name=".view.PackageDetailsActivity" />
         <activity android:name=".view.PackagesActivity" />
         <activity android:name=".view.AddNewPackageActivity"></activity>
     </application>
