@@ -1,9 +1,11 @@
 package com.macktaby.sbrp.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,11 +15,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
-//import com.macktaby.sbrp.models.*;
 import com.macktaby.sbrp.R;
 import com.macktaby.sbrp.model.Package;
 import com.macktaby.sbrp.parsing.*;
@@ -71,7 +71,21 @@ public class PackagesActivity extends AppCompatActivity {
         btn_deletePackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deletePackage();
+                new AlertDialog.Builder(PackagesActivity.this)
+                        .setTitle("Delete Package !!!")
+                        .setMessage("Are you sure you want to delete this package?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                deletePackage();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
             }
         });
 
