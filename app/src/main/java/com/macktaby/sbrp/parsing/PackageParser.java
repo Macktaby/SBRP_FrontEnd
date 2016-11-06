@@ -1,9 +1,8 @@
 package com.macktaby.sbrp.parsing;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import com.macktaby.sbrp.models.Package;
+import com.macktaby.sbrp.model.Package;
 
 import org.json.JSONArray;
 import org.json.JSONException;

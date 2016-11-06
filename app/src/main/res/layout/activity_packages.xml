@@ -9,11 +9,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activities.PackagesActivity">
+    tools:context=".view.PackagesActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
@@ -46,16 +48,24 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listview_packages"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="5">
 
-    </ListView>
+        <ListView
+            android:id="@+id/listview_packages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <RelativeLayout
+        </ListView>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="bottom">
 
         <Button
@@ -65,7 +75,8 @@
             android:foregroundGravity="bottom"
             android:text="Add new Package" />
 
-    </RelativeLayout>
+    </LinearLayout>
+
 
 
 </LinearLayout>

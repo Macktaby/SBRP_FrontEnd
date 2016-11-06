@@ -1,4 +1,4 @@
-package com.macktaby.sbrp.models;
+package com.macktaby.sbrp.model;
 
 public class Attribute {
 

@@ -1,4 +1,4 @@
-package com.macktaby.sbrp.Activities;
+package com.macktaby.sbrp.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.macktaby.sbrp.R;
-import com.macktaby.sbrp.models.Package;
+import com.macktaby.sbrp.model.Package;
 import com.macktaby.sbrp.parsing.*;
 
 public class AddNewPackageActivity extends AppCompatActivity {

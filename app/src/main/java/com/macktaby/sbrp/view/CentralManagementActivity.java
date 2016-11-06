@@ -1,4 +1,4 @@
-package com.macktaby.sbrp.Activities;
+package com.macktaby.sbrp.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.macktaby.sbrp.R;
-import com.macktaby.sbrp.models.Package;
+import com.macktaby.sbrp.model.Package;
 
 public class CentralManagementActivity extends AppCompatActivity {
 

@@ -10,18 +10,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ProjectManagementActivity" />
-        <activity android:name=".Activities.CentralManagementActivity" />
-        <activity android:name=".Activities.PackageDetailsActivity" />
-        <activity android:name=".Activities.PackagesActivity" />
-        <activity android:name=".Activities.AddNewPackageActivity"></activity>
+        <activity android:name=".view.ProjectManagementActivity" />
+        <activity android:name=".view.CentralManagementActivity" />
+        <activity android:name=".view.PackageDetailsActivity" />
+        <activity android:name=".view.PackagesActivity" />
+        <activity android:name=".view.AddNewPackageActivity"></activity>
     </application>
 
 </manifest>

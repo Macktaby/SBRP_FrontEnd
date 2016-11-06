@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.macktaby.sbrp.models.Package;
+import com.macktaby.sbrp.model.Package;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.macktaby.sbrp.Activities;
+package com.macktaby.sbrp.view;
 
 import android.content.Context;
 import android.content.Intent;

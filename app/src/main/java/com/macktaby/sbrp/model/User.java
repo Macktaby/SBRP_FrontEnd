@@ -1,35 +1,35 @@
-package com.macktaby.sbrp.models;
+package com.macktaby.sbrp.model;
 
-public class Block {
+public class User {
 
-	private int blockID;
+	private int userID;
 	private String name;
 	private Project project;
 
-	public Block() {
-		this.blockID = 0;
+	public User() {
+		this.userID = 0;
 		this.name = "";
 		this.project = new Project();
 	}
 
-	public Block(int blockID, String name, int projectID) {
-		this.blockID = blockID;
+	public User(int userID, String name, int projectID) {
+		this.userID = userID;
 		this.name = name;
 		this.project = new Project(projectID, "", "", "", "", 1);
 	}
 
-	public Block(int blockID, String name, Project project) {
-		this.blockID = blockID;
+	public User(int userID, String name, Project project) {
+		this.userID = userID;
 		this.name = name;
 		this.project = project;
 	}
 
-	public int getBlockID() {
-		return blockID;
+	public int getUserID() {
+		return userID;
 	}
 
-	public void setBlockID(int blockID) {
-		this.blockID = blockID;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 
 	public String getName() {

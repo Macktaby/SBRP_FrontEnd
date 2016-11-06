@@ -1,11 +1,10 @@
-package com.macktaby.sbrp.Activities;
+package com.macktaby.sbrp.view;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,12 +13,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 //import com.macktaby.sbrp.models.*;
 import com.macktaby.sbrp.R;
-import com.macktaby.sbrp.models.Package;
+import com.macktaby.sbrp.model.Package;
 import com.macktaby.sbrp.parsing.*;
 
 public class PackagesActivity extends AppCompatActivity {
@@ -135,8 +135,29 @@ public class PackagesActivity extends AppCompatActivity {
                             return;
                         }
 
+
                         subPackages = PackageParser.parsePackages(result);
                         ArrayList<String> packagesStr = new ArrayList<String>();
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
+                        for (Package pkg : subPackages)
+                            packagesStr.add(pkg.getName());
                         for (Package pkg : subPackages)
                             packagesStr.add(pkg.getName());
 

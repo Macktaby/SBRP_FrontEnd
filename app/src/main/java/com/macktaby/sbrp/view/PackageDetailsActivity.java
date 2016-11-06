@@ -1,4 +1,4 @@
-package com.macktaby.sbrp.Activities;
+package com.macktaby.sbrp.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
