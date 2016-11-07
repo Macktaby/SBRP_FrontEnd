@@ -19,7 +19,8 @@
     <EditText
         android:id="@+id/editText_new_package_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/textView_new_package_tech_ref"
@@ -30,7 +31,8 @@
     <EditText
         android:id="@+id/editText_new_tech_ref"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/textView_new_package_mng_ref"
@@ -41,7 +43,8 @@
     <EditText
         android:id="@+id/editText_new_mng_ref"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/textView_new_package_bz_ref"
@@ -52,7 +55,8 @@
     <EditText
         android:id="@+id/editText_new_bz_ref"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text" />
 
     <RelativeLayout
         android:layout_width="fill_parent"

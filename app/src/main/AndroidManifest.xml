@@ -24,7 +24,8 @@
         <activity android:name=".view.EditPackageActivity" />
         <activity android:name=".view.PeopleActivity" />
         <activity android:name=".view.ProjectsActivity" />
-        <activity android:name=".view.AddNewProjectActivity"></activity>
+        <activity android:name=".view.AddNewProjectActivity" />
+        <activity android:name=".view.EditProjectActivity"></activity>
     </application>
 
 </manifest>

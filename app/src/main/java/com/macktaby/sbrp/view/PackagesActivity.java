@@ -76,7 +76,6 @@ public class PackagesActivity extends AppCompatActivity {
         btn_editPackage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), pkg.getName(), Toast.LENGTH_LONG).show();
                 startActivity(
                         EditPackageActivity.getIntent(getApplicationContext(), pkg)
                 );
