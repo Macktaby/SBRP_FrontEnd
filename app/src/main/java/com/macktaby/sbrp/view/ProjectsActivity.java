@@ -50,6 +50,12 @@ public class ProjectsActivity extends Activity {
         attachViewActions();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadProjectsFromAPI();
+    }
+
     private void attachViewIDs() {
         listView_projects = (ListView) findViewById(R.id.listview_projects);
 
@@ -66,7 +72,6 @@ public class ProjectsActivity extends Activity {
         }
     }
 
-    // TODO
     private void attachViewActions() {
 
     }
@@ -91,6 +96,8 @@ public class ProjectsActivity extends Activity {
                             return;
                         }
 
+                        Toast.makeText(ProjectsActivity.this, result, Toast.LENGTH_LONG).show();
+
                         subProjects = ProjectParser.parseProjects(result);
                         ArrayList<String> projectsStr = new ArrayList<String>();
                         for (Project project : subProjects)
@@ -107,11 +114,9 @@ public class ProjectsActivity extends Activity {
                         listView_projects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                                 startActivity(
                                         ProjectsActivity.getIntent(ProjectsActivity.this, subProjects.get(i))
                                 );
-
                             }
                         });
 
