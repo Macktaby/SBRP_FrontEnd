@@ -45,7 +45,6 @@ public class PersonParser {
 
     public static int parseID(String result) {
         try {
-
             JSONObject jsonObject = new JSONObject(result);
             return jsonObject.getInt("id");
         } catch (JSONException e) {
