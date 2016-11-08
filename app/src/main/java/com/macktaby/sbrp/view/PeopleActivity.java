@@ -1,9 +1,7 @@
 package com.macktaby.sbrp.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,9 +14,8 @@ import android.widget.Toast;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.macktaby.sbrp.R;
+import com.macktaby.sbrp.parsing.*;
 import com.macktaby.sbrp.model.*;
-import com.macktaby.sbrp.model.Package;
-import com.macktaby.sbrp.parsing.PackageParser;
 
 import java.util.ArrayList;
 
@@ -52,54 +49,44 @@ public class PeopleActivity extends AppCompatActivity {
         btn_add_new_person = (Button) findViewById(R.id.btn_add_new_person);
     }
 
-    // TODO Back end Needed
     private void loadPersonsFromAPI() {
-//        String baseURL = "https://macktaby-merged.rhcloud.com/SBRP/rest/cm/getPeople";
-//
-//        Uri builtUri = Uri.parse(baseURL).buildUpon()
-//                .appendQueryParameter("id", String.valueOf(pkg.getPackageID()))
-//                .build();
-//
-//        Ion.with(this)
-//                .load("POST", builtUri.toString())
-//                .setHeader("Content-Type", "application/x-www-form-urlencoded")
-//                .asString()
-//                .setCallback(new FutureCallback<String>() {
-//
-//                    @Override
-//                    public void onCompleted(Exception e, String result) {
-//                        if (e != null) {
-//                            Toast.makeText(PackagesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                            return;
-//                        }
-//
-//
-//                        subPackages = PackageParser.parsePackages(result);
-//                        ArrayList<String> packagesStr = new ArrayList<String>();
-//                        for (Package pkg : subPackages)
-//                            packagesStr.add(pkg.getName());
-//
-//                        ArrayAdapter<String> mForecastAdapter =
-//                                new ArrayAdapter<>(
-//                                        PackagesActivity.this, // The current context (this activity)
-//                                        R.layout.list_item_package, // The name of the layout ID.
-//                                        R.id.list_item_package_textview, // The ID of the textview to populate.
-//                                        packagesStr);
-//
-//                        list_packages.setAdapter(mForecastAdapter);
-//                        list_packages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                            @Override
-//                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                                startActivity(
-//                                        PackagesActivity.getIntent(PackagesActivity.this, subPackages.get(i))
-//                                );
-//
-//                            }
-//                        });
-//
-//                    }
-//                });
+        String baseURL = "https://macktaby-merged.rhcloud.com/SBRP/rest/cm/getPersons";
+
+        Ion.with(this)
+                .load("POST", baseURL)
+                .setHeader("Content-Type", "application/x-www-form-urlencoded")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        if (e != null) {
+                            Toast.makeText(PeopleActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        persons = PersonParser.parsePeople(result);
+                        ArrayList<String> personsStr = new ArrayList<String>();
+                        for (Person person : persons)
+                            personsStr.add(person.getName());
+
+                        ArrayAdapter<String> mForecastAdapter =
+                                new ArrayAdapter<>(
+                                        PeopleActivity.this, // The current context (this activity)
+                                        R.layout.list_item_package, // The name of the layout ID.
+                                        R.id.list_item_package_textview, // The ID of the textview to populate.
+                                        personsStr);
+
+                        listView_people.setAdapter(mForecastAdapter);
+                        listView_people.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                // TODO TO BE COMPLETED
+                            }
+                        });
+
+                    }
+                });
     }
 
 
