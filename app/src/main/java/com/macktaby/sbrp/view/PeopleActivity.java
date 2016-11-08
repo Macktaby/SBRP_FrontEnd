@@ -36,6 +36,7 @@ public class PeopleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_people);
 
         attachViewIDs();
+        attachViewActions();
     }
 
     @Override
@@ -47,6 +48,17 @@ public class PeopleActivity extends AppCompatActivity {
     private void attachViewIDs() {
         listView_people = (ListView) findViewById(R.id.listView_persons);
         btn_add_new_person = (Button) findViewById(R.id.btn_add_new_person);
+    }
+
+    private void attachViewActions() {
+        btn_add_new_person.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(
+                        AddNewPersonActivity.getIntent(getBaseContext())
+                );
+            }
+        });
     }
 
     private void loadPersonsFromAPI() {

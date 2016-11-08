@@ -26,7 +26,8 @@
         <activity android:name=".view.ProjectsActivity" />
         <activity android:name=".view.AddNewProjectActivity" />
         <activity android:name=".view.EditProjectActivity" />
-        <activity android:name=".view.AddNewPersonActivity"></activity>
+        <activity android:name=".view.AddNewPersonActivity" />
+        <activity android:name=".view.EditPersonActivity"></activity>
     </application>
 
 </manifest>

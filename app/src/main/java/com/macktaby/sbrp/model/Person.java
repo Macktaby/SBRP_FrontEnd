@@ -1,6 +1,8 @@
 package com.macktaby.sbrp.model;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable{
 
 	private int personID;
 	private String name;
