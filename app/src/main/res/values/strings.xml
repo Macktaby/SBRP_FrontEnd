@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SBRP</string>
+    <string name="title_activity_edit_attribute">EditAttributeActivity</string>
 </resources>

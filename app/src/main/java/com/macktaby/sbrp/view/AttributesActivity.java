@@ -2,8 +2,11 @@ package com.macktaby.sbrp.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -21,6 +24,7 @@ import com.macktaby.sbrp.R;
 import com.macktaby.sbrp.model.Attribute;
 import com.macktaby.sbrp.model.Person;
 import com.macktaby.sbrp.parsing.AttributeParser;
+import com.macktaby.sbrp.parsing.PackageParser;
 import com.macktaby.sbrp.parsing.PersonParser;
 
 import java.util.ArrayList;
@@ -66,13 +70,32 @@ public class AttributesActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        final int position = info.position;
+
         int menuItemIndex = item.getItemId();
         String[] menuItems = getResources().getStringArray(R.array.attribute_context_menu);
         String selectedItem = menuItems[menuItemIndex];
 
         if (selectedItem.equals("Edit")) {
-
+            startActivity(
+                    EditAttributeActivity.getIntent(AttributesActivity.this, attributes.get(position))
+            );
         } else if (selectedItem.equals("Delete")) {
+            new AlertDialog.Builder(AttributesActivity.this)
+                    .setTitle("Delete Attribute !!!")
+                    .setMessage("Are you sure you want to delete this Attribute?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            deleteAttribute(position);
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
 
         }
 
@@ -131,4 +154,31 @@ public class AttributesActivity extends AppCompatActivity {
                 });
     }
 
+    private void deleteAttribute(int position) {
+        String baseURL = "https://macktaby-merged.rhcloud.com/SBRP/rest/cm/deleteAttribute";
+
+        Uri builtUri = Uri.parse(baseURL).buildUpon()
+                .appendQueryParameter("id", String.valueOf(attributes.get(position).getAttributeID()))
+                .build();
+
+        Ion.with(this)
+                .load("POST", builtUri.toString())
+                .setHeader("Content-Type", "application/x-www-form-urlencoded")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        if (e != null) {
+                            Toast.makeText(AttributesActivity.this, "Error Deleting this Attribute\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        if (PackageParser.parseState(result).equals("true"))
+                            Toast.makeText(AttributesActivity.this, "The Attribute deleted successfully", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(AttributesActivity.this, "Error Deleting this Attribute", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 }

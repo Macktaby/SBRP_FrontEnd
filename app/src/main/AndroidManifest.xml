@@ -30,7 +30,10 @@
         <activity android:name=".view.EditPersonActivity" />
         <activity android:name=".view.PersonActivity" />
         <activity android:name=".view.AttributesActivity" />
-        <activity android:name=".view.AddNewAttributeActivity"></activity>
+        <activity android:name=".view.AddNewAttributeActivity" />
+        <activity
+            android:name=".view.EditAttributeActivity"
+            android:label="@string/title_activity_edit_attribute"></activity>
     </application>
 
 </manifest>
