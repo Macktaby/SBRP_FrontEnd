@@ -1,51 +1,53 @@
 package com.macktaby.sbrp.model;
 
-public class Attribute {
+import java.io.Serializable;
 
-	private int attributeID;
-	private String name;
-	private String value;
+public class Attribute implements Serializable {
 
-	public Attribute() {
-		this.attributeID = 0;
-		this.name = "";
-		this.value = "";
-	}
+    private int attributeID;
+    private String name;
+    private String value;
 
-	public Attribute(int attributeID, String name) {
-		this.attributeID = attributeID;
-		this.name = name;
-		this.value = "";
-	}
+    public Attribute() {
+        this.attributeID = 0;
+        this.name = "";
+        this.value = "";
+    }
 
-	public Attribute(int attributeID, String name, String value) {
-		this.attributeID = attributeID;
-		this.name = name;
-		this.value = value;
-	}
+    public Attribute(int attributeID, String name) {
+        this.attributeID = attributeID;
+        this.name = name;
+        this.value = "";
+    }
 
-	public int getAttributeID() {
-		return attributeID;
-	}
+    public Attribute(int attributeID, String name, String value) {
+        this.attributeID = attributeID;
+        this.name = name;
+        this.value = value;
+    }
 
-	public void setAttributeID(int attributeID) {
-		this.attributeID = attributeID;
-	}
+    public int getAttributeID() {
+        return attributeID;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setAttributeID(int attributeID) {
+        this.attributeID = attributeID;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getValue() {
-		return value;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 
 }

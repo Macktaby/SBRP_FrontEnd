@@ -54,11 +54,11 @@ public class AttributesActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        if (v.getId()==R.id.listView_attributes) {
-            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+        if (v.getId() == R.id.listView_attributes) {
+            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
             menu.setHeaderTitle("Options");
             String[] menuItems = getResources().getStringArray(R.array.attribute_context_menu);
-            for (int i = 0; i<menuItems.length; i++) {
+            for (int i = 0; i < menuItems.length; i++) {
                 menu.add(Menu.NONE, i, i, menuItems[i]);
             }
         }
@@ -68,7 +68,14 @@ public class AttributesActivity extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item) {
         int menuItemIndex = item.getItemId();
         String[] menuItems = getResources().getStringArray(R.array.attribute_context_menu);
-        Toast.makeText(this, menuItems[menuItemIndex], Toast.LENGTH_SHORT).show();
+        String selectedItem = menuItems[menuItemIndex];
+
+        if (selectedItem.equals("Edit")) {
+
+        } else if (selectedItem.equals("Delete")) {
+
+        }
+
         return true;
     }
 
@@ -81,21 +88,13 @@ public class AttributesActivity extends AppCompatActivity {
         btn_add_new_attribute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(
-//                        AddNewPersonActivity.getIntent(PeopleActivity.this)
-//                );
+                startActivity(
+                        AddNewAttributeActivity.getIntent(AttributesActivity.this)
+                );
             }
         });
 
         registerForContextMenu(listView_attributes);
-        listView_attributes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                                startActivity(
-//                                        PersonActivity.getIntent(AttributesActivity.this, attributes.get(i))
-//                                );
-            }
-        });
     }
 
     private void loadAttributesFromAPI() {
