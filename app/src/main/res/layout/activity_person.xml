@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_packages"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,8 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="7"
-    tools:context=".view.PackagesActivity">
+    tools:context="com.macktaby.sbrp.view.PersonActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,11 +17,18 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView_package_name"
+            android:id="@+id/textView_person_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Package Name"
+            android:text="Person Name"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textView_person_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Person Role"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,23 +36,19 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_edit_package"
+                android:id="@+id/btn_edit_person"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
                 android:layout_weight="1"
                 android:text="Edit" />
 
             <Button
-                android:id="@+id/btn_delete_package"
+                android:id="@+id/btn_delete_person"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
                 android:layout_weight="1"
                 android:text="Delete" />
-
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -56,28 +57,9 @@
         android:layout_weight="5">
 
         <ListView
-            android:id="@+id/listview_packages"
+            android:id="@+id/listView_person_report"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </ListView>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="bottom">
-
-        <Button
-            android:id="@+id/btn_add_new_package"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:foregroundGravity="bottom"
-            android:text="Add new Package" />
-
-    </LinearLayout>
-
-
 </LinearLayout>
