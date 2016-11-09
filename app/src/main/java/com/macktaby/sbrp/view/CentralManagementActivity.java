@@ -69,5 +69,14 @@ public class CentralManagementActivity extends AppCompatActivity {
             }
         });
 
+        btn_attributes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(
+                        AttributesActivity.getIntent(CentralManagementActivity.this)
+                );
+            }
+        });
+
     }
 }
