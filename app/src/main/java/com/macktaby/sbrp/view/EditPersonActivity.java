@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,7 @@ import com.macktaby.sbrp.model.Project;
 import com.macktaby.sbrp.parsing.PackageParser;
 import com.macktaby.sbrp.parsing.PersonParser;
 
-public class EditPersonActivity extends Activity {
+public class EditPersonActivity extends AppCompatActivity {
 
     private Person person;
 
@@ -28,7 +29,7 @@ public class EditPersonActivity extends Activity {
     private Button btn_editPerson;
 
     public static Intent getIntent(Context context, Person person) {
-        return new Intent(context, EditProjectActivity.class)
+        return new Intent(context, EditPersonActivity.class)
                 .putExtra("person", person);
     }
 

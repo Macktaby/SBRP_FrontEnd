@@ -55,7 +55,7 @@ public class PeopleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(
-                        AddNewPersonActivity.getIntent(getBaseContext())
+                        AddNewPersonActivity.getIntent(PeopleActivity.this)
                 );
             }
         });
@@ -78,7 +78,7 @@ public class PeopleActivity extends AppCompatActivity {
                         }
 
                         persons = PersonParser.parsePeople(result);
-                        ArrayList<String> personsStr = new ArrayList<String>();
+                        ArrayList<String> personsStr = new ArrayList<>();
                         for (Person person : persons)
                             personsStr.add(person.getName());
 
@@ -93,7 +93,9 @@ public class PeopleActivity extends AppCompatActivity {
                         listView_people.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                // TODO TO BE COMPLETED
+                                startActivity(
+                                        PersonActivity.getIntent(PeopleActivity.this, persons.get(i))
+                                );
                             }
                         });
 

@@ -28,7 +28,8 @@
         <activity android:name=".view.EditProjectActivity" />
         <activity android:name=".view.AddNewPersonActivity" />
         <activity android:name=".view.EditPersonActivity" />
-        <activity android:name=".view.PersonActivity"></activity>
+        <activity android:name=".view.PersonActivity" />
+        <activity android:name=".view.AttributesActivity"></activity>
     </application>
 
 </manifest>

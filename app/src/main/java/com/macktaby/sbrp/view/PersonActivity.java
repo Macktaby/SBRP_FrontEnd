@@ -64,7 +64,7 @@ public class PersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(
-                        EditPersonActivity.getIntent(getBaseContext(), person)
+                        EditPersonActivity.getIntent(PersonActivity.this, person)
                 );
             }
         });
@@ -72,7 +72,7 @@ public class PersonActivity extends AppCompatActivity {
         btn_deletePerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AlertDialog.Builder(getBaseContext())
+                new AlertDialog.Builder(PersonActivity.this)
                         .setTitle("Delete Person !!!")
                         .setMessage("Are you sure you want to delete this person?")
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
